@@ -15,6 +15,7 @@ RUN set -ex \
 	&& pip install supervisor-stdout
 COPY supervisord.conf /etc/supervisord.conf
 ENV KCP_MTU=1350 KCP_MODE=fast KCP_KEY=123456789 KCP_DATASHARED=5 KCP_PARITYSHARED=5 KCP_SNDWND=1024
+ENV TIMEOUT 3600
 EXPOSE 41111/udp
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
